@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="css/signup.css">
+</head>
+<body>
+
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+            <h3>Welcome</h3>
+            <p>You are 30 seconds away from earning your own money!</p>
+            <a href="signin.html">
+                <input type="submit" name="" value="Login"/><br/>
+            </a>
+        </div>
+        <div class="col-md-9 register-right">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Employee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Hirer</a>
+                </li>
+            </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <h3 class="register-heading">Apply as a Employee</h3>
+                <div class="row register-form ml-5">
+                    <div class="col-md-9 ml-5">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="username" placeholder="User Name *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="email" placeholder="Email *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password" placeholder="Password *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password2"   placeholder="Confirm Password *" value="" />
+                        </div>
+                        <input type="submit" class="btnRegister"  value="Register"/>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <script src="js/config.js"></script>
+    <script src="js/signup.js"></script>
+
+    <script>
+        firebase.auth().onAuthStateChanged(function(user){
+            if(user){
+                var userID = firebase.auth().currrentUser.uid;
+                firebase.database().ref('Users/'+userID).once('value').then(snapshot=>{
+                    if(snapshot.val()){
+                        window.location.href = 'Home.html'
+                    }else
+                        window.location.href = 'accountSetting.html'
+                })
+            }
+        });
+    </script>
+
+</body>
+</html>

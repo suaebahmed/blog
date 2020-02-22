@@ -1,14 +1,14 @@
 $(document).ready(()=>{
-    $('.btnSubmit').click(function(){
 
+
+    $('.btnSubmit').click(function(){
         var name = $("#name").val();
         var email = $("#email").val();
         var phone = $("#phone").val();
         var country = $("#country").val();
     
-        console.log(name,email,phone,country)
+        // console.log(name,email,phone,country)
     
-
         if(name != '' && email != '' && phone != '' && country != '' ){
             // var rootRef = firebase.database().ref('check').child("Users");
             // var userId = firebase.auth().currentUser.uid;
@@ -34,5 +34,14 @@ $(document).ready(()=>{
         }else{
             window.alert('please fill up all the feilds');
         }
-    })
+    });
+
+    var starCountRef = firebase.database().ref('users');
+    starCountRef.on('value', function(snapshot) {
+    // updateStarCount(postElement, snapshot.val());
+    console.log(snapshot)
+    console.log(snapshot.val())
+    });
+
+
 })

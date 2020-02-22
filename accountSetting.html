@@ -54,7 +54,7 @@
                     console.log(userID)
                     firebase.database().ref('Users/'+userID).once('value').then(snapshot=>{
                     if(snapshot.val()){
-                        window.location.href = 'Home.html'
+                        window.location.href = 'index.html'
                     }else{
                         console.log('user not in database')
                     }

@@ -1,0 +1,26 @@
+#from-section{
+    border: 1px solid rgb(236, 132, 132);
+    margin: 50px 5px;
+}
+
+#newCol{
+    border: 1px solid rgb(169, 102, 236);
+    margin: 50px 5px;
+}
+
+/* #row{
+    border: 1px solid rgba(27, 12, 226, 0.5);
+} */
+/* .card{
+    margin: 10px;
+} */
+
+@media (max-width: 570px){
+        /* .login-container{
+            border: 1px solid rgb(7, 1, 14);
+            margin: 0px 30px;
+        }  */
+        #row{
+            margin: 0px 30px;
+        }
+}

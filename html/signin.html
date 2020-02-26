@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="stylesheet" href="css/signin.css">
+    <link rel="stylesheet" href="../task.html/signin.css">
 </head>
 <script>
 </script>
@@ -13,21 +13,21 @@
     <div class="container login-container">
         <div class="row">
             <div class="col-md-6 login-form-1 mx-auto">
-                <h3>Account setting Form</h3>
+                <h3>Login Form</h3>
                     <div class="form-group">
-                        <input type="text" id="name" class="form-control" placeholder="Your Name *" value="" />
+                        <input type="text" id="email" class="form-control" placeholder="Your Email *" value="" />
                     </div>
                     <div class="form-group">
-                        <input type="text" id="email" class="form-control" placeholder="Your email *" value="" />
+                        <input type="password" id="password" class="form-control" placeholder="Your Password *" value="" />
                     </div>
                     <div class="form-group">
-                        <input type="text" id="phone" class="form-control" placeholder="Your phone *" value="" />
+                        <input type="submit" class="btnSubmit" value="Login" />
                     </div>
                     <div class="form-group">
-                        <input type="text" id="country" class="form-control" placeholder="Your country name *" value="" />
+                        <a href="forgetPassword.html">forget password?</a>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btnSubmit" value="Save" />
+                        <a href="signup.html" class="ForgetPwd">have not account?</a>
                     </div>
             </div>
         </div>
@@ -36,36 +36,22 @@
     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
 
 
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="js/config.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/signin.js"></script>
     <script>
         firebase.auth().onAuthStateChanged(function(user){
             if(user){
-                console.log(user.email)
-                var user1 = firebase.auth().currentUser;
-                console.log('current user is '+user1)
-                if(user1){
-                    var userID = user1.uid
-                    console.log(userID)
-                    firebase.database().ref('Users/'+userID).once('value').then(snapshot=>{
-                    if(snapshot.val()){
-                        window.location.href = 'index.html'
-                    }else{
-                        console.log('user not in database')
-                    }
-                })
-               }
+                window.location.href='index.html';
             }else{
-                console.log('no user sign in')
+                console.log('not logged')
             }
-        });
+        })
     </script>
-    <script src="js/accoutsetting.js"></script>
 </body>
 </html>
 <script>

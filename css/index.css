@@ -135,4 +135,36 @@ nav{-webkit-transition: padding-top .3s,padding-bottom .3s;
     margin-bottom: 40px;
 }
 }
- 
+
+#deleteBtn:hover{
+	background-color: rgb(233, 30, 97);
+  }
+
+#logoutBtn,#deleteBtn{
+	cursor: pointer;
+}
+ /* ---------------------  post card ------------------ */
+#cardSection{
+	margin-top: 20px;
+}
+#card{
+	margin: 15px auto;
+	padding-top: 5px;
+}
+/*   ------------------ progress bar------------------- */
+#progressOuter{
+	margin: 10px auto;
+	outline: 1px solid rgb(67, 138, 245);
+}
+#progressInner{
+	background: rgb(42, 119, 235);
+	width: 0%;
+	height: 25px;
+}
+#progressBarText{
+	margin: 5px;
+	color: white;
+}
+#nav{
+	background-color: rgb(13, 29, 51);
+}

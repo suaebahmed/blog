@@ -4,52 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/index.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="css/index.css">
 <style>
   #deleteBtn:hover{
     background-color: rgb(233, 30, 97);
   }
 </style>
-
 </head>
 <body>
     
 <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="banner">
-	<div class="container">
-  <a class="navbar-brand" href="#"><span>Logo</span> Here</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <div class="container">
+    <a class="navbar-brand" href="/"><span>Logo</span> Here</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
   <!-- Navbar links -->
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="html/signup.html">Sign up</a>
+            <a class="nav-link" href="html/myBlog.html">My Blog</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="html/signin.html">Sign in</a>
-          </li>
+              <a class="nav-link" href="html/task.html">My Task</a>
+            </li>
           <li class="nav-item">
-            <a class="nav-link" href="html/accountSetting.html">account setting</a>
-          </li> 
+                <a class="nav-link" href="html/signin.html">Sign In</a>
+          </li>
         <!-- Dropdown -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            Dropdown link
+            User Options
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" id="logoutBtn" >Logout</a>
-            <a class="dropdown-item" id="deleteBtn" >Delete your account</a>
-            <a class="dropdown-item" href="html/task.html">My Task</a>
+              <a class="dropdown-item" href="html/signup.html">Sign up</a>
+              <a class="dropdown-item" href="html/task.html">Account setting</a>
+              <a class="dropdown-item" id="logoutBtn" >Logout</a>
+              <a class="dropdown-item" id="deleteBtn" >Delete your account</a>
           </div>
         </li>
         </ul>
       </div>
       </div>
-    </nav>
+</nav>
 
-    <div class="banner">
+
+
+<div class="banner">
       <div class="container">
       <div class="banner-text">
       <div class="banner-heading">
@@ -61,8 +63,8 @@
       <button type="button" class="btn btn-warning text-dark btn-banner">Get started</button>
       </div>
       </div>
-    </div>
-    <section id="about">
+</div>
+<section id="about">
     <div class="container">
       <div class="text-intro">
       <h2>About Us</h2>
@@ -70,27 +72,46 @@
       </div>
     </div>
 </section>
-<!-- ------------------------------ blog section-------------------------- -->
+
+<hr>
+
+<!-- ------------------------------ blog create section-------------------------- -->
   <section>
     <div class="row">
       <div class="col-6 mx-auto">
-
+       <div class="form-group">
+          <input type="text" id="title" class="form-control" placeholder="Your title *"/>
+       </div>
         <div class="form-group">
-          <textarea type="text" id="textarea" class="form-control" placeholder="Your Email *"></textarea>
+          <textarea type="text" id="textarea" class="form-control" placeholder="Your post *"></textarea>
       </div>
-    <div class="form-group">
-        <input type="file" id="file" class="form-control" placeholder="Your Email *" multiple/>
-        <progress id='progressB' value="0" max="100"> 32% </progress>   
-     </div>
-        <div class="form-group">
-          <input type="submit" id="submitBtn" class="form-control" value="save" />
-          <input type="submit" id="download" class="form-control" value="download" />
+      <div class="form-group">
+          <input type="file" id="file" class="form-control" multiple/>
+      </div>
+      <div id="progressOuter">
+        <div id="progressInner">
+          <span id="progressBarText">0%</span>
         </div>
-          <div id="img"></div>
-          <img src="https://firebasestorage.googleapis.com/v0/b/blog-c3c70.appspot.com/o/Blog_img%2F20190530_171022.jpg?alt=media&token=f2cea36d-93cb-4488-a456-25fa058f15bc" alt="" width="250px" height="250px">
+      </div>
+        <div class="form-group">
+          <div id="img">
+          </div>        
+          <input type="submit" id="submitBtn" class="btn btn-primary form-control" value="upload" />
+        </div>
       </div>
     </div>
   </section>
+<!-- -------------------------------------  All new Blog--------------------------- -->
+
+<hr>
+<section>
+  <div class="container text-center">
+   <h1>All new post</h1>
+    <div class="row" id="cardSection">
+
+    </div>
+  </div>
+</section>
 
 
 <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
@@ -118,15 +139,13 @@
 
   firebase.auth().onAuthStateChanged(function(user){
             if(!user){
-              setTimeout(()=>{
-                window.alert('Please Sign up Or login to see the features of this website')
-                window.location.href='signin.html';
-              },1000)
+                // window.alert('Please Sign up Or login to see the features of this website')
+                window.location.href='html/signin.html';
             }else{
-
             }
       })
 </script>
+
 <script src="js/index.js"></script>
 </body>
 </html>

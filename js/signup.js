@@ -10,7 +10,7 @@ $(document).ready(function(){
             firebase.auth().createUserWithEmailAndPassword(email,password)
             .then(()=>{
                 console.log('successful')
-                window.location.href = 'index.html'
+                window.location.href = '/'
             }).catch(error=>{
                 let errorCode = error.code;
                 let errorMessage = error.message;

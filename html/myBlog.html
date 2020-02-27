@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="/css/blog.css">
+    <title>my blog</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top"style="background-color: #1c4766;">
+        <div class="container">
+      <a class="navbar-brand" href="/"><span>Logo</span> Here</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Navbar links -->
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="myBlog.html">my Blog</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="task.html">My Task</a>
+                </li>
+              <li class="nav-item">
+                    <a class="nav-link" href="signin.html">Sign in</a>
+              </li>
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                User Options
+              </a>
+              <div class="dropdown-menu">
+                  <a class="dropdown-item" href="signup.html">Sign up</a>
+                  <a class="dropdown-item" href="task.html">Account setting</a>
+                  <!-- <a class="dropdown-item" id="logoutBtn" >Logout</a>
+                  <a class="dropdown-item" id="deleteBtn" >Delete your account</a> -->
+              </div>
+            </li>
+            </ul>
+          </div>
+          </div>
+    </nav>
+    
+    <section id="blog">
+        <div class="container text-center">
+         <h1>All my post</h1>
+          <div class="row" id="cardSection">
+          </div>
+        </div>
+      </section>
+
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="../js/config.js"></script>
+<script>
+        var cardSection = document.getElementById('cardSection');
+        var rootDRef = firebase.database().ref('Blogs');
+
+        firebase.auth().onAuthStateChanged(function(user){
+          if(user){
+            var x=rootDRef.orderByChild('uid').equalTo(user.uid);
+              x.on('value',snapshot=>{
+              var ur = firebase.auth().currentUser
+              console.log(ur.email)
+              cardSection.innerHTML = ''
+              snapshot.forEach(data=>{
+              var val = data.val();
+              cardSection.innerHTML += `<div id="card" class="card mb-3 justify-content-md-center" style="width: 500px; height: auto">
+                                              <img class="card-img-top" src="${val.imgPath}" alt="Card image cap" width="300px" height="280px">
+                                              <div class="card-body">
+                                              <h5 class="card-title">${val.text}</h5>
+                                              <p class="card-text">This is This content is a little bit longer.</p>
+                                              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                              </div>
+                                          </div>`
+              })
+          })
+      }
+      else{
+            cardSection.innerHTML = '<h3 style="color: red">you are not sign in/sign up</h1>'
+      }
+    })
+
+
+</script>
+
+</body>
+</html>

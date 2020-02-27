@@ -49,15 +49,6 @@ $(document).ready(function(){
           },function(){
 
 
-
-//  save data is realtime database
-
-            console.log('complate file upload');
-            var imgPath = storageRef.getDownloadURL()
-            .then(url=>{
-                var databaseRef = firebase.database().ref('Blogs/'+firebase.auth().currentUser.uid).set({
-                  text: textarea.value,
-                  imgPath: url 
                 },function(err){
                   if(err)
                     console.log(err)
